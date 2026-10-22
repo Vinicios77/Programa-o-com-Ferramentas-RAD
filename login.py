@@ -24,7 +24,6 @@ class TelaPrincipal(wx.Frame):
         painel = wx.Panel(self)
         sizer = wx.BoxSizer(wx.VERTICAL)
 
-        # Mensagem de boas-vindas
         texto_bem_vindo = wx.StaticText(painel, label=f"Acesso liberado!\nBem-vindo(a), {usuario}.")
         fonte = wx.Font(14, wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD)
         texto_bem_vindo.SetFont(fonte)
@@ -80,8 +79,8 @@ class TelaRecuperacao(wx.Frame):
         usuarios = carregar_usuarios()
 
         if usuario in usuarios:
-            usuarios[usuario] = nova_senha # Atualiza a senha
-            salvar_usuarios(usuarios) # Grava no arquivo
+            usuarios[usuario] = nova_senha
+            salvar_usuarios(usuarios)
             wx.MessageBox("Senha alterada com sucesso!", "Sucesso", wx.OK | wx.ICON_INFORMATION)
             self.Close()
         else:
@@ -129,7 +128,7 @@ class TelaLogin(wx.Frame):
         usuarios = carregar_usuarios()
 
         if usuario in usuarios and usuarios[usuario] == senha:
-            self.Hide() # Oculta a tela de login
+            self.Hide()
             tela_principal = TelaPrincipal(None, usuario)
             tela_principal.Show()
         else:
